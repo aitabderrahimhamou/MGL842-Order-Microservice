@@ -1,0 +1,24 @@
+
+- name: Deploy latest Docker image to EC2
+  hosts: order_microservices
+  become: true
+  tasks:
+    - name: Pull latest Docker image
+      community.docker.docker_image:
+        name: hamou99/ecommerce-order-microservice:latest
+        source: pull
+
+    - name: Stop and remove old container if exists
+      community.docker.docker_container:
+        name: order-microservice
+        state: absent
+        force_kill: true
+
+    - name: Run new container
+      community.docker.docker_container:
+        name: order-microservice
+        image: hamou99/ecommerce-order-microservice:latest
+        state: started
+        restart_policy: always
+        ports:
+          - "3002:3002"

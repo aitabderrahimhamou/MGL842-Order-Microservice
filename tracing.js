@@ -7,7 +7,7 @@ const { SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_VERSION } = require('@open
 const { deprecate } = require('util');
 
 // l'Exporter
-const traceExporter =  new OTLPTraceExporter({url: "http://localhost:4318/v1/traces"})
+const traceExporter =  new OTLPTraceExporter({url: "https://0218-142-137-160-192.ngrok-free.app/v1/traces"})
 
 const sdk = new opentelemetry.NodeSDK({
     resource: new Resource({
