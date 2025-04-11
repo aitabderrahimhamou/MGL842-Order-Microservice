@@ -33,7 +33,7 @@ class App {
   
     setTimeout(async () => {
       try {
-        const amqpServer = "amqp://18.188.165.112:5672/";
+        const amqpServer = "amqp://3.133.99.248:5672/";
         const connection = await amqp.connect(amqpServer);
         console.log("Service Order connected to RabbitMQ");
         const channel = await connection.createChannel();
